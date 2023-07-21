@@ -12,7 +12,7 @@ struct ADSR
     s::Float64
     r::Float64
     sustainlevel::Float64
-    
+
     function ADSR(a, d, s, r, sustainlevel)
         if a+d+s+r != 1
             error("ADSR should sum to 1.")
@@ -20,7 +20,7 @@ struct ADSR
         if sustainlevel > 1
             error("Sustain level should be below 1")
         end
-        
+
         new(a,d,s,r, sustainlevel)
     end
 end
@@ -37,8 +37,8 @@ function ADSRlevels(values::ADSR, t::Float64) # t is percentage of duration thro
     end
 end
 
-function ADSRapply(values::ADSR, t::Vector{Float64})
-    [ADSRlevels(values, i-1/length(t))*t[i] for i in 1:length(t)]
+function ADSRapply(values::ADSR, sound::Vector{Float64})
+    [ADSRlevels(values, i-1/length(sound))*sound[i] for i in 1:length(sound)]
 end
 
 function sine(freq, time, samplerate=44100)
@@ -59,6 +59,5 @@ function play(x::Vector{Float64} ; samplerate=44100)
         write(stream, x)
     end
 end
-
 
 end
