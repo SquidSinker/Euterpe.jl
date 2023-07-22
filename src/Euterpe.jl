@@ -4,7 +4,7 @@ using PortAudio
 using SampledSignals
 using FFTW
 
-export play, sine, square, sawtooth, play, ADSR, ADSRlevels, ADSRapply, note_to_freq, notes_to_freq
+export play, sine, square, sawtooth, play, ADSR, ADSRlevels, ADSRapply, note_to_freq, notes_to_freq, clip_dist, lowpass, highpass
 
 include("notes.jl")
 include("effects.jl")
