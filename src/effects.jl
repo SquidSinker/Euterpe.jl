@@ -1,5 +1,5 @@
 function compress(sound::Vector, threshold::Float64, ratio::Float64)
-    compressed = []
+    compressed = Float64[]
     for i in sound
         if abs(i) > threshold
             push!(compressed, i/ratio)
@@ -11,7 +11,7 @@ function compress(sound::Vector, threshold::Float64, ratio::Float64)
 end
 
 function clip_dist(sound::Vector, threshold::Float64)
-    dist = []
+    dist = Float64[]
     for i in sound
         if abs(i) > threshold
             push!(dist, threshold)
@@ -31,7 +31,7 @@ function lowpass(sound::Vector, amount::Float64)
     for i in 2:length(sound)
         push!(filtered, amount * sound[i] + (1-amount) * sound[i-1])
     end
-    return
+    return filtered
 end
 
 function highpass(sound::Vector, amount::Float64)
@@ -43,5 +43,5 @@ function highpass(sound::Vector, amount::Float64)
     for i in 2:length(sound)
         push!(filtered, amount * sound[i] - (1-amount) * sound[i-1])
     end
-    return
+    return filtered
 end
