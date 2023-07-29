@@ -5,3 +5,5 @@
 Euterpe.jl is a ground-up synthesiser, written in native Julia. This project is a heavy work in progress. Future plans include a suite of effects. THis package uses the high quality Julia packages for FFTs and DiffEqs, making this a perfect language to experiment with instrument simulation as an alternative to sampling. Much of this is yet to come, so watch this space.
 
 The package is named after the muse presiding over music from Greek mythology.
+
+JuliaCon Presentation: https://drive.google.com/drive/folders/14sARbTRDWW5orESvp2wCKN3bPiEdTwbn
