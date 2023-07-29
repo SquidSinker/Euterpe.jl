@@ -6,7 +6,7 @@ using FFTW
 using ModelingToolkit
 using DifferentialEquations
 
-export play, sine, square, sawtooth, play, ADSR, ADSRlevels, ADSRapply, 
+export play, sine, square, sawtooth, play, ADSR, ADSRlevels, ADSRapply,
         note_to_freq, notes_to_freq, clip_dist, lowpass, highpass, compress
 
 include("notes.jl")
@@ -49,6 +49,10 @@ function chords(instrument::Function, freq::Vector, time=0.5)
     normalize(x)
 end
 
+function normalize(s::Vector)
+    return s ./ (maximum(abs.(s)))
+end
+
 function add(oscillators, freq, time, samplerate=44100 )
     s = zeros(length((1:time*samplerate)/samplerate))
     for o in oscillators
@@ -58,9 +62,5 @@ function add(oscillators, freq, time, samplerate=44100 )
 end
 
 add([(sine, 0.2), (sawtooth, 0.8)], 440, 0.5)
-
-function normalize(s::Vector)
-    return s ./ (maximum(abs.(s)))
-end
 
 end
